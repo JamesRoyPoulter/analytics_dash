@@ -1,0 +1,10 @@
+{
+  "client": "client_name_1",
+  "days": [
+      {"day": "2013-12-06 11:22:33", "impressions": 1, "shares": 2, "fbclicks": 3, "conversions": 4 },
+      {"day": "2013-12-05 11:22:33", "impressions": 1, "shares": 2, "fbclicks": 3, "conversions": 4 },
+      {"day": "2013-12-04 11:22:33", "impressions": 1, "shares": 2, "fbclicks": 3, "conversions": 4 },
+      {"day": "2013-12-03 11:22:33", "impressions": 1, "shares": 2, "fbclicks": 3, "conversions": 4 },
+      {"day": "2013-12-02 11:22:33", "impressions": 1, "shares": 2, "fbclicks": 3, "conversions": 4 }
+  ]
+}
