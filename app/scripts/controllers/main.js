@@ -1,15 +1,18 @@
 'use strict';
 
 angular.module('yeomanTestApp')
-  .controller('MainCtrl', function ($scope, JsonService) {
+  .controller('MainCtrl', function ($scope, JsonDayService, JsonHourService) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    JsonService.get(function(data){
-      $scope.client = data.client;
-      $scope.children = data.children;
+    JsonHourService.get(function(hoursData){
+      $scope.clientHours = hoursData.client;
+    });
+    JsonDayService.get(function(daysData){
+      $scope.clientDays = daysData.client;
+      $scope.clientFbclicks = daysData.days[0].fbclicks;
     });
     $scope.chart = {
       labels : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],

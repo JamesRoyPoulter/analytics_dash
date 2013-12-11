@@ -5,7 +5,8 @@ angular.module('yeomanTestApp', [
   'ngSanitize',
   'ngRoute',
   'angles',
-  'jsonService'
+  'jsonDayService',
+  'jsonHourService'
 ])
   .config(function ($routeProvider) {
     $routeProvider

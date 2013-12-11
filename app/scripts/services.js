@@ -1,6 +1,11 @@
 'use strict';
 
-angular.module('jsonService', ['ngResource'])
-.factory('JsonService', function($resource) {
+angular.module('jsonDayService', ['ngResource'])
+.factory('JsonDayService', function($resource) {
   return $resource('data/days.json');
+});
+
+angular.module('jsonHourService', ['ngResource'])
+.factory('JsonHourService', function($resource) {
+  return $resource('data/hours.json');
 });
