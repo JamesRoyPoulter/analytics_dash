@@ -22,9 +22,11 @@
 
   <div class="jumbotron col-md-9">
     <p class="lead">
-      Welcome to your dash {{ clientDays }} {{clientFbclicks}}
+      Welcome to your dash {{ clientName }} {{clientFbclicks}}
     </p>
-    <canvas chart type="Line" options="options" data="chart" width="500" height="300"></canvas>
+    <!-- <p><canvas barchart options="options" data="lineChart" width="900" height="300"></canvas></p> -->
+    <p><canvas chart type="Line" options="options" data="lineChart" width="800" height="300"></canvas></p>
+
   </div>
 
 </div>

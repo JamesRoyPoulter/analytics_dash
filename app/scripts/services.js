@@ -9,3 +9,8 @@ angular.module('jsonHourService', ['ngResource'])
 .factory('JsonHourService', function($resource) {
   return $resource('data/hours.json');
 });
+
+angular.module('jsonClientService', ['ngResource'])
+.factory('JsonClientService', function($resource) {
+  return $resource('data/client.json');
+});
