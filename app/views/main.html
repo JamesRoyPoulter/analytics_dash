@@ -1,5 +1,5 @@
-<div class="header">
-  <ul class="nav nav-tabs pull-right">
+<div class="header" id='header_top'>
+  <ul class="nav nav-tabs pull-right pull-down">
     <li class="active"><a ng-href="#">Dash</a></li>
     <li><a ng-href="#">Account</a></li>
     <li><a ng-href="#">Logout</a></li>
@@ -7,32 +7,75 @@
   <h3 class="text-muted"><img src="images/rummble_labs_logo.png" alt="RummbleLabs" style="height:40px"></h3>
 </div>
 
+<div class="row header" id='client_header'>
+  <div class="col-md-8">
+    <h1>Welcome {{clientName}}!</h1>
+  </div>
+
+    <div class="col-md-4" id='right-bits'>
+      <div id='date-range'>date/range - date/range</div>
+      <div class="btn-group" id='drop-down'>
+          <button type="button" class="btn btn-default">Week</button>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Day</a></li>
+            <li><a href="#">Week</a></li>
+            <li><a href="#">Month</a></li>
+          </ul>
+        </div>
+      </div>
+
+</div><!-- closes row -->
+
 <div class='row'>
 
 <div class="col-md-3">
   <ul class="nav nav-pills nav-stacked">
-    <li class="active"><a ng-href="#">
-      <div class="metricTitle">Impressions</div>
-      <div class="count">{{currentDayImpressions}} </div>
-      <div class="delta">{{deltaImpressions}}</div>
-    </a></li>
-    <li><a ng-href="#">Shares {{currentDayShares}} {{deltaShares}}</a></li>
-    <li><a ng-href="#">Visits {{currentDayVisits}} {{deltaVisits}}</a></li>
-    <li><a ng-href="#">Conversions {{currentDayConversions}} {{deltaConversions}}</a></li>
+    <li id="impressions">
+      <a ng-href="#" class='aPadding'>
+        <div class="metricTitle">Impressions</div>
+        <div><div class="count">{{currentDayImpressions}} </div>
+        <div class="delta">{{deltaImpressions}}</div></div>
+      </a>
+    </li>
+
+    <li id='shares'>
+      <a ng-href="#" class='aPadding'>
+        <div class="metricTitle">Shares</div>
+        <div><div class="count">{{currentDayShares}} </div>
+        <div class="delta">{{deltaShares}}</div></div>
+      </a>
+    </li>
+
+    <li id='visits'>
+      <a ng-href="#" class='aPadding'>
+        <div class="metricTitle">Visits</div>
+        <div><div class="count">{{currentDayVisits}} </div>
+        <div class="delta">{{deltaVisits}}</div></div>
+      </a>
+    </li>
+
+    <li id='conversions'>
+      <a ng-href="#" class='aPadding'>
+        <div class="metricTitle">Conversions</div>
+        <div><div class="count">{{currentDayConversions}} </div>
+        <div class="delta">{{deltaConversions}}</div></div>
+      </a>
+    </li>
   </ul>
   <br>
 </div>
 
   <div class="jumbotron col-md-9">
-    <p class="lead">
-      Welcome to your dash {{ clientName }} of type {{clientType}} and URL : {{clientURL}}
-    </p>
     <!-- <p><canvas barchart options="options" data="lineChart" width="900" height="300"></canvas></p> -->
-    <p><canvas chart type="Line" options="options" data="lineChart" width="800" height="300"></canvas></p>
+    <p><canvas chart type="Line" options="options" data="lineChart" width="650" height="350"></canvas></p>
 
   </div>
 
-</div>
+</div><!-- closes row -->
 
 <div class="footer">
   <p>♥ from the Rummble Labs team</p>

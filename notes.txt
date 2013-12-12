@@ -1,0 +1,4 @@
+things to do
+
+
+- make chart width change dynamicallky on page load with javascript getting screen.width

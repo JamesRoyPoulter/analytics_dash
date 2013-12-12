@@ -2,6 +2,17 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
+$i_color: #3C6CE6;
+$s_color: #F78F1E;
+$v_color: #10AAE9;
+$c_color: #f1c40f;
+
+.pull-down {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -28,6 +39,12 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
+#header_top {
+    position: relative;
+}
+
+
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
     margin-top: 0;
@@ -47,24 +64,114 @@ body {
     margin: 30px 0;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
+
+
+/*****  CLIENT HEADER *********/
+#client_header {
+    position: relative;
+}
+
+#right-bits {
+    vertical-align: bottom;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 10px;
+}
+
+#date-range {
+    position: absolute;
+    bottom: 0;
+}
+
+/* Drop down box */
+#drop-down {
+    float: right;
+}
+
+/* Metrics boxes */
+.aPadding {
+    padding: 5px !important;
+}
+
+.metricTitle {
     text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+    padding: 4px 0px 8px 0px;
+    font-size: 1.5em;
+    color: white;
 }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+.count, .delta {
+    width: 48.5%;
+    display: inline-block;
+    text-align: center;
+    background-color: white;
+    color: black;
+    padding: 12px;
+    font-size: 1.2em;
 }
 
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
+.count {
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-left-radius: 4px;
 }
 
-.marketing p + h4 {
-    margin-top: 28px;
+.delta {
+    -moz-border-radius-bottomright: 4px;
+    border-bottom-right-radius: 4px;
+    float: right;
+}
+
+#impressions, #shares, #visits, #conversions {
+    margin-bottom: 16px;
+    color: white !important;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 2px;
+}
+
+#impressions {
+    background-color: rgba( $i_color, .7 );
+
+    .count {
+       color: $i_color;
+    }
+    .delta {
+        color: $i_color;
+    }
+}
+
+#shares {
+    background-color: rgba( $s_color, .7 );
+
+    .count {
+       color: $s_color;
+    }
+    .delta {
+        color: $s_color;
+    }
+}
+
+#visits {
+    background-color: rgba( $v_color, .7 );
+
+    .count {
+       color: $v_color;
+    }
+    .delta {
+        color: $v_color;
+    }
+}
+
+#conversions {
+    background-color:  rgba( $c_color, .7 );
+
+    .count {
+       color: $c_color;
+    }
+    .delta {
+        color: $c_color;
+    }
 }
 
 /* Responsive: Portrait tablets and up */
@@ -75,7 +182,6 @@ body {
 
     /* Remove the padding we set earlier */
     .header,
-    .marketing,
     .footer {
         padding-left: 0;
         padding-right: 0;
@@ -83,9 +189,5 @@ body {
     /* Space out the masthead */
     .header {
         margin-bottom: 30px;
-    }
-    /* Remove the bottom border on the jumbotron for visual effect */
-    .jumbotron {
-        border-bottom: 0;
     }
 }
