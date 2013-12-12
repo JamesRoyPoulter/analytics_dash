@@ -30,12 +30,28 @@ angular.module('yeomanTestApp')
       $scope.previousDayShares = data.days[1].shares;
       $scope.previousDayVisits = data.days[1].fbclicks;
       $scope.previousDayConversions = data.days[1].conversions;
-      // delta
+      // deltas
       $scope.deltaImpressions = Math.round(((data.days[0].impressions/data.days[1].impressions)*100)-100)+'%';
       $scope.deltaShares = Math.round(((data.days[0].shares/data.days[1].shares)*100)-100)+'%';
       $scope.deltaVisits = Math.round(((data.days[0].fbclicks/data.days[1].fbclicks)*100)-100)+'%';
       $scope.deltaConversions = Math.round(((data.days[0].conversions/data.days[1].conversions)*100)-100)+'%';
+      // 14 day graph
+      var lastFourteenImpressions = 0;
+      for (var i = 0; i < 6; i++) {
+        lastFourteenImpressions = lastFourteenImpressions + data.days[i].impressions;
+      }
+      $scope.fourteenImpressions = lastFourteenImpressions;
 
+      // var lastFourteenShares = 0;
+      // $scope.fourteenShares = lastFourteenShares();
+
+
+      // var lastFourteenVisits = 0;
+      // $scope.fourteenVisits = lastFourteenVisits();
+
+
+      // var lastFourteenConversions = 0;
+      // $scope.fourteenConversions = lastFourteenConversions();
 
       //WEEK DATA
       //current week
