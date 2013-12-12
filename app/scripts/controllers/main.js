@@ -2,16 +2,48 @@
 
 angular.module('yeomanTestApp')
   .controller('MainCtrl', function ($scope, JsonDayService, JsonHourService, JsonClientService) {
+
+    // get client JSON
     JsonClientService.get(function(data){
-      $scope.clientName = data.client
+      $scope.clientName = data.client;
+      $scope.clientType = data.type;
+      $scope.clientURL = data.url;
     });
-    var yoda = JsonHourService.get(function(data){
-      console.log(data.hours[0].shares);
-      console.log('data.hours[0].shares');
-      yoda.data = data;
+
+    // get hours JSON
+    JsonHourService.get(function(data){
+      $scope.hourData = data;
     });
-    JsonDayService.get(function(daysData){
-      $scope.clientFbclicks = daysData.days[0].fbclicks;
+
+    // get days JSON
+    JsonDayService.get(function(data){
+
+      // GET ALL DATA
+      //DAY DATA
+      // current day
+      $scope.currentDayImpressions = data.days[0].impressions;
+      $scope.currentDayShares = data.days[0].shares;
+      $scope.currentDayVisits = data.days[0].fbclicks;
+      $scope.currentDayConversions = data.days[0].conversions;
+      // previous day
+      $scope.previousDayImpressions = data.days[1].impressions;
+      $scope.previousDayShares = data.days[1].shares;
+      $scope.previousDayVisits = data.days[1].fbclicks;
+      $scope.previousDayConversions = data.days[1].conversions;
+      // delta
+      $scope.deltaImpressions = Math.round(((data.days[0].impressions/data.days[1].impressions)*100)-100)+'%';
+      $scope.deltaShares = Math.round(((data.days[0].shares/data.days[1].shares)*100)-100)+'%';
+      $scope.deltaVisits = Math.round(((data.days[0].fbclicks/data.days[1].fbclicks)*100)-100)+'%';
+      $scope.deltaConversions = Math.round(((data.days[0].conversions/data.days[1].conversions)*100)-100)+'%';
+
+
+      //WEEK DATA
+      //current week
+
+
+      //current month
+
+      $scope.clientFbclicks = data.days[0].fbclicks;
       $scope.lineChart = {
         labels : ['Impressions', 'Shares', 'Visits', 'Conversions', 'X'],
         datasets : [
@@ -27,9 +59,19 @@ angular.module('yeomanTestApp')
               strokeColor : '#f1c40f',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#f1c40f',
-              data : [daysData.days[0].fbclicks, 3, 2, 5, 4]
+              data : [data.days[1].fbclicks, 3, 2, 5, 4]
             }
           ],
         };
+      $scope.options = {
+        scaleLineColor : 'rgba(0,0,0,.1)',
+        scaleOverride : true,
+        //Number - The number of steps in a hard coded scale
+        scaleSteps : 6,
+        //Number - The value jump in the hard coded scale
+        scaleStepWidth : 1,
+        //Number - The scale starting value
+        scaleStartValue : 0,
+      };
     });
   });

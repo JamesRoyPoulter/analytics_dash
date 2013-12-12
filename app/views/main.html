@@ -11,18 +11,21 @@
 
 <div class="col-md-3">
   <ul class="nav nav-pills nav-stacked">
-    <li class="active"><a ng-href="#">Overview</a></li>
-    <li><a ng-href="#">Visits</a></li>
-    <li><a ng-href="#">Shares</a></li>
-    <li><a ng-href="#">Conversions</a></li>
+    <li class="active"><a ng-href="#">
+      <div class="metricTitle">Impressions</div>
+      <div class="count">{{currentDayImpressions}} </div>
+      <div class="delta">{{deltaImpressions}}</div>
+    </a></li>
+    <li><a ng-href="#">Shares {{currentDayShares}} {{deltaShares}}</a></li>
+    <li><a ng-href="#">Visits {{currentDayVisits}} {{deltaVisits}}</a></li>
+    <li><a ng-href="#">Conversions {{currentDayConversions}} {{deltaConversions}}</a></li>
   </ul>
   <br>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Feedback!</a></p>
 </div>
 
   <div class="jumbotron col-md-9">
     <p class="lead">
-      Welcome to your dash {{ clientName }} {{clientFbclicks}}
+      Welcome to your dash {{ clientName }} of type {{clientType}} and URL : {{clientURL}}
     </p>
     <!-- <p><canvas barchart options="options" data="lineChart" width="900" height="300"></canvas></p> -->
     <p><canvas chart type="Line" options="options" data="lineChart" width="800" height="300"></canvas></p>
