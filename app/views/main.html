@@ -38,7 +38,7 @@
       <a ng-href="#" class='aPadding'>
         <div class="metricTitle">Impressions</div>
         <div><div class="count">{{dayNowImpressions}} </div>
-        <div class="delta">{{deltaImpressions}}</div></div>
+        <div class="delta">{{dayDeltaImpressions}}</div></div>
       </a>
     </li>
 
@@ -46,7 +46,7 @@
       <a ng-href="#" class='aPadding'>
         <div class="metricTitle">Shares</div>
         <div><div class="count">{{dayNowShares}} </div>
-        <div class="delta">{{deltaShares}}</div></div>
+        <div class="delta">{{dayDeltaShares}}</div></div>
       </a>
     </li>
 
@@ -54,7 +54,7 @@
       <a ng-href="#" class='aPadding'>
         <div class="metricTitle">Visits</div>
         <div><div class="count">{{dayNowVisits}} </div>
-        <div class="delta">{{deltaVisits}}</div></div>
+        <div class="delta">{{dayDeltaVisits}}</div></div>
       </a>
     </li>
 
@@ -62,7 +62,7 @@
       <a ng-href="#" class='aPadding'>
         <div class="metricTitle">Conversions</div>
         <div><div class="count">{{dayNowConversions}} </div>
-        <div class="delta">{{deltaConversions}}</div></div>
+        <div class="delta">{{dayDeltaConversions}}</div></div>
       </a>
     </li>
   </ul>
@@ -70,8 +70,53 @@
 </div>
 
   <div class="jumbotron col-md-9">
-    <!-- <p><canvas barchart options="options" data="lineChart" width="900" height="300"></canvas></p> -->
     <p><canvas chart type="Line" options="dayOptions" data="dayChart" width="650" height="350"></canvas></p>
+
+  </div>
+
+</div><!-- closes row -->
+
+<div class='row'>
+
+<div class="col-md-3">
+  <ul class="nav nav-pills nav-stacked">
+    <li id="impressions">
+      <a ng-href="#" class='aPadding'>
+        <div class="metricTitle">Impressions</div>
+        <div><div class="count">{{weekNowImpressions}} </div>
+        <div class="delta">{{weekDeltaImpressions}}</div></div>
+      </a>
+    </li>
+
+    <li id='shares'>
+      <a ng-href="#" class='aPadding'>
+        <div class="metricTitle">Shares</div>
+        <div><div class="count">{{weekNowShares}} </div>
+        <div class="delta">{{weekDeltaShares}}</div></div>
+      </a>
+    </li>
+
+    <li id='visits'>
+      <a ng-href="#" class='aPadding'>
+        <div class="metricTitle">Visits</div>
+        <div><div class="count">{{weekNowVisits}} </div>
+        <div class="delta">{{weekDeltaVisits}}</div></div>
+      </a>
+    </li>
+
+    <li id='conversions'>
+      <a ng-href="#" class='aPadding'>
+        <div class="metricTitle">Conversions</div>
+        <div><div class="count">{{weekNowConversions}} </div>
+        <div class="delta">{{weekDeltaConversions}}</div></div>
+      </a>
+    </li>
+  </ul>
+  <br>
+</div>
+
+  <div class="jumbotron col-md-9">
+    <p><canvas chart type="Line" options="weekOptions" data="weekChart" width="650" height="350"></canvas></p>
 
   </div>
 

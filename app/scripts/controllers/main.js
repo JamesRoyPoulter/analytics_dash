@@ -18,7 +18,15 @@ angular.module('yeomanTestApp')
     // get days JSON
     JsonDayService.get(function(data){
 
-      //DAY DATA
+      //  convert all date strings into date time objects
+      for (var a = 0; a < data.days.length; a++) {
+        var splitDate;
+        splitDate = data.days[a].day.split(/\-|\s/);
+        data.days[a].day = new Date(splitDate.slice(0,3).join('/')+' '+splitDate[3]);
+
+      }
+
+      //DAY DATA --------------------------------------------------
       // current day (and day 14)
       $scope.dayNowImpressions = data.days[0].impressions;
       $scope.dayNowShares = data.days[0].shares;
@@ -30,10 +38,10 @@ angular.module('yeomanTestApp')
       $scope.dayPreviousVisits = data.days[1].fbclicks;
       $scope.dayPreviousConversions = data.days[1].conversions;
       // deltas
-      $scope.deltaImpressions = Math.round(((data.days[0].impressions/data.days[1].impressions)*100)-100)+'%';
-      $scope.deltaShares = Math.round(((data.days[0].shares/data.days[1].shares)*100)-100)+'%';
-      $scope.deltaVisits = Math.round(((data.days[0].fbclicks/data.days[1].fbclicks)*100)-100)+'%';
-      $scope.deltaConversions = Math.round(((data.days[0].conversions/data.days[1].conversions)*100)-100)+'%';
+      $scope.dayDeltaImpressions = Math.round(((data.days[0].impressions/data.days[1].impressions)*100)-100)+'%';
+      $scope.dayDeltaShares = Math.round(((data.days[0].shares/data.days[1].shares)*100)-100)+'%';
+      $scope.dayDeltaVisits = Math.round(((data.days[0].fbclicks/data.days[1].fbclicks)*100)-100)+'%';
+      $scope.dayDeltaConversions = Math.round(((data.days[0].conversions/data.days[1].conversions)*100)-100)+'%';
       // 14 day graph data
       // day 12
       $scope.day12Impressions = data.days[2].impressions;
@@ -97,30 +105,82 @@ angular.module('yeomanTestApp')
       $scope.day1Conversions = data.days[13].conversions;
 
 
-      // WEEK DATA
-      var lastFourteenImpressions = 0;
+      // WEEK DATA ------------------------------------------------
+      // current week (and week 8)
+      // impressions
+      var lastSevenImpressions = 0;
       for (var i = 0; i < 6; i++) {
-        lastFourteenImpressions = lastFourteenImpressions + data.days[i].impressions;
+        lastSevenImpressions = lastSevenImpressions + data.days[i].impressions;
       }
-      $scope.fourteenImpressions = lastFourteenImpressions;
+      $scope.weekNowImpressions = lastSevenImpressions;
 
-      // var lastFourteenShares = 0;
-      // $scope.fourteenShares = lastFourteenShares();
+      // shares
+      var lastSevenShares = 0;
+      for (var j = 0; j < 6; j++) {
+        lastSevenShares = lastSevenShares + data.days[j].shares;
+      }
+      $scope.weekNowShares = lastSevenShares;
+
+      // visits
+      var lastSevenVisits = 0;
+      for (var k = 0; k < 6; k++) {
+        lastSevenVisits = lastSevenVisits + data.days[k].fbclicks;
+      }
+      $scope.weekNowVisits = lastSevenVisits;
+
+      // conversions
+      var lastSevenConversions = 0;
+      for (var l = 0; l < 6; l++) {
+        lastSevenConversions = lastSevenConversions + data.days[l].conversions;
+      }
+      $scope.weekNowConversions = lastSevenConversions;
+
+      // previous week (and week 7)
+      // impressions
+      var previousSevenImpressions = 0;
+      for (var m = 7; m < 13; m++) {
+        previousSevenImpressions = previousSevenImpressions + data.days[m].impressions;
+      }
+      $scope.weekPreviousImpressions = previousSevenImpressions;
+
+      // shares
+      var previousSevenShares = 0;
+      for (var n = 7; n < 13; n++) {
+        previousSevenShares = previousSevenShares + data.days[n].shares;
+      }
+      $scope.weekPreviousShares = previousSevenShares;
+
+      // visits
+      var previousSevenVisits = 0;
+      for (var o = 7; o < 13; o++) {
+        previousSevenVisits = previousSevenVisits + data.days[o].fbclicks;
+      }
+      $scope.weekPreviousVisits = previousSevenVisits;
+
+      // conversions
+      var previousSevenConversions = 0;
+      for (var p = 7; p < 13; p++) {
+        previousSevenConversions = previousSevenConversions + data.days[p].conversions;
+      }
+      $scope.weekPreviousConversions = previousSevenConversions;
+
+      // deltas
+      $scope.weekDeltaImpressions = Math.round((($scope.weekNowImpressions/$scope.weekPreviousImpressions)*100)-100)+'%';
+      $scope.weekDeltaShares = Math.round((($scope.weekNowShares/$scope.weekPreviousShares)*100)-100)+'%';
+      $scope.weekDeltaVisits = Math.round((($scope.weekNowVisits/$scope.weekPreviousVisits)*100)-100)+'%';
+      $scope.weekDeltaConversions = Math.round((($scope.weekNowConversions/$scope.weekPreviousConversions)*100)-100)+'%';
 
 
-      // var lastFourteenVisits = 0;
-      // $scope.fourteenVisits = lastFourteenVisits();
+      // 8 week graph data
+      // console.log(data.days[0].day.getDay())
+      // console.log(data.days[0].day.getDate())
+      // console.log(data.days[0].day.getMonth())
 
 
-      // var lastFourteenConversions = 0;
-      // $scope.fourteenConversions = lastFourteenConversions();
-
-      //WEEK DATA
-      //current week
-
+      //  MONTH DATA -----------------------------------------
       //current month
 
-      $scope.clientFbclicks = data.days[0].fbclicks;
+      //  DAY GRAPH
       $scope.dayChart = {
         labels : ['1','2','3','4','5','6','7','8','9','10','11','12','13','14'],
         datasets : [
@@ -160,9 +220,55 @@ angular.module('yeomanTestApp')
         //Number - The number of steps in a hard coded scale
         scaleSteps : 6,
         //Number - The value jump in the hard coded scale
-        scaleStepWidth : 100,
+        scaleStepWidth : 300,
         //Number - The scale starting value
         scaleStartValue : 1,
       };
+
+      //  WEEK GRAPH
+      $scope.weekChart = {
+        labels : ['1','2','3','4','5','6','7','8','9','10','11','12','13','14'],
+        datasets : [
+          {
+              fillColor : 'rgba(151,187,205,0)',
+              strokeColor : '#3C6CE6',
+              pointColor : 'rgba(151,187,205,0)',
+              pointStrokeColor : '#3C6CE6',
+              data : [$scope.day1Impressions, $scope.day2Impressions, $scope.day3Impressions, $scope.day4Impressions, $scope.day5Impressions, $scope.day6Impressions, $scope.day7Impressions, $scope.day8Impressions, $scope.day9Impressions, $scope.day10Impressions, $scope.day11Impressions, $scope.day12Impressions, $scope.dayPreviousImpressions, $scope.dayNowImpressions]
+            },
+            {
+              fillColor : 'rgba(151,187,205,0)',
+              strokeColor : '#F78F1E',
+              pointColor : 'rgba(151,187,205,0)',
+              pointStrokeColor : '#F78F1E',
+              data : [$scope.day1Shares, $scope.day2Shares, $scope.day3Shares, $scope.day4Shares, $scope.day5Shares, $scope.day6Shares, $scope.day7Shares, $scope.day8Shares, $scope.day9Shares, $scope.day10Shares, $scope.day11Shares, $scope.day12Shares, $scope.dayPreviousShares, $scope.dayNowShares]
+            },
+            {
+              fillColor : 'rgba(151,187,205,0)',
+              strokeColor : '#10AAE9',
+              pointColor : 'rgba(151,187,205,0)',
+              pointStrokeColor : '#10AAE9',
+              data : [$scope.day1Visits, $scope.day2Visits, $scope.day3Visits, $scope.day4Visits, $scope.day5Visits, $scope.day6Visits, $scope.day7Visits, $scope.day8Visits, $scope.day9Visits, $scope.day10Visits, $scope.day11Visits, $scope.day12Visits, $scope.dayPreviousVisits, $scope.dayNowVisits]
+            },
+            {
+              fillColor : 'rgba(151,187,205,0)',
+              strokeColor : '#f1c40f',
+              pointColor : 'rgba(151,187,205,0)',
+              pointStrokeColor : '#f1c40f',
+              data : [$scope.day1Conversions, $scope.day2Conversions, $scope.day3Conversions, $scope.day4Conversions, $scope.day5Conversions, $scope.day6Conversions, $scope.day7Conversions, $scope.day8Conversions, $scope.day9Conversions, $scope.day10Conversions, $scope.day11Conversions, $scope.day12Conversions, $scope.dayPreviousConversions, $scope.dayNowConversions]
+            }
+          ],
+        };
+      $scope.weekOptions = {
+        scaleLineColor : 'rgba(0,0,0,.1)',
+        scaleOverride : true,
+        //Number - The number of steps in a hard coded scale
+        scaleSteps : 6,
+        //Number - The value jump in the hard coded scale
+        scaleStepWidth : 300,
+        //Number - The scale starting value
+        scaleStartValue : 1,
+      };
+
     });
   });
