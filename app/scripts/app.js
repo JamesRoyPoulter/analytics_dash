@@ -7,7 +7,8 @@ angular.module('yeomanTestApp', [
   'angles',
   'jsonDayService',
   'jsonHourService',
-  'jsonClientService'
+  'jsonClientService',
+  'jsonWeekService'
 ])
   .config(function ($routeProvider) {
     $routeProvider

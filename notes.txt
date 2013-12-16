@@ -4,3 +4,6 @@ things to do
 - make chart width change dynamicallky on page load with javascript getting screen.width
 - make y axis labels dynamic according to the data being pulled through. i.e 1- 10. 1- 1000. 500 -1000
 - make labels the actual dates of the days
+- auto graph creation on addition of day data field
+- make so much DRYer
+- so much DRYer

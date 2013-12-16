@@ -1,13 +1,18 @@
 'use strict';
 
 angular.module('yeomanTestApp')
-  .controller('MainCtrl', function ($scope, JsonDayService, JsonHourService, JsonClientService) {
+  .controller('MainCtrl', function ($scope, JsonDayService, JsonHourService, JsonClientService, JsonWeekService) {
 
     // get client JSON
     JsonClientService.get(function(data){
       $scope.clientName = data.client;
       $scope.clientType = data.type;
       $scope.clientURL = data.url;
+    });
+
+    //  get week JSON
+    JsonWeekService.get(function(data){
+      $scope.weekData = data;
     });
 
     // get hours JSON
@@ -18,12 +23,19 @@ angular.module('yeomanTestApp')
     // get days JSON
     JsonDayService.get(function(data){
 
+      // prototype function to get week number from dates
+      Date.prototype.getWeekNumber = function(){
+          var d = new Date(+this);
+          d.setHours(0,0,0);
+          d.setDate(d.getDate()+4-(d.getDay()||7));
+          return Math.ceil((((d-new Date(d.getFullYear(),0,1))/8.64e7)+1)/7);
+        };
+
       //  convert all date strings into date time objects
       for (var a = 0; a < data.days.length; a++) {
         var splitDate;
         splitDate = data.days[a].day.split(/\-|\s/);
         data.days[a].day = new Date(splitDate.slice(0,3).join('/')+' '+splitDate[3]);
-
       }
 
       //DAY DATA --------------------------------------------------
@@ -106,7 +118,7 @@ angular.module('yeomanTestApp')
 
 
       // WEEK DATA ------------------------------------------------
-      // current week (and week 8)
+      // current week
       // impressions
       var lastSevenImpressions = 0;
       for (var i = 0; i < 6; i++) {
@@ -135,7 +147,7 @@ angular.module('yeomanTestApp')
       }
       $scope.weekNowConversions = lastSevenConversions;
 
-      // previous week (and week 7)
+      // previous week
       // impressions
       var previousSevenImpressions = 0;
       for (var m = 7; m < 13; m++) {
@@ -172,9 +184,25 @@ angular.module('yeomanTestApp')
 
 
       // 8 week graph data
-      // console.log(data.days[0].day.getDay())
-      // console.log(data.days[0].day.getDate())
-      // console.log(data.days[0].day.getMonth())
+
+      // get current week
+      var currentDate = new Date();
+      var currentWeek = currentDate.getWeekNumber();
+      var weekData = $scope.weekData;
+
+      // if data.days[x].day.getWeekNumber matches currentWeek - x then push into week array?
+      // or just then add to that week's totals.  push the days. better.
+
+      for (var ii = 0; ii < data.days.length; ii++) {
+        if (data.days[ii].day.getWeekNumber() >= currentWeek-7) {
+          weekData.week8[0].impressions = weekData.week8[0].impressions + data.days[ii].impressions;
+          weekData.week8[0].shares = weekData.week8[0].shares + data.days[ii].shares;
+          weekData.week8[0].fbclicks = weekData.week8[0].fbclicks + data.days[ii].fbclicks;
+          weekData.week8[0].conversions = weekData.week8[0].conversions + data.days[ii].conversions;
+        }
+      }
+
+
 
 
       //  MONTH DATA -----------------------------------------
@@ -227,7 +255,7 @@ angular.module('yeomanTestApp')
 
       //  WEEK GRAPH
       $scope.weekChart = {
-        labels : ['1','2','3','4','5','6','7','8','9','10','11','12','13','14'],
+        labels : [currentWeek-13, currentWeek -12,currentWeek-11,currentWeek-10,currentWeek-9,currentWeek-8,currentWeek-7,currentWeek-6,currentWeek-5,currentWeek-4,currentWeek-3,currentWeek-2,currentWeek-1,currentWeek],
         datasets : [
           {
               fillColor : 'rgba(151,187,205,0)',

@@ -14,3 +14,8 @@ angular.module('jsonClientService', ['ngResource'])
 .factory('JsonClientService', function($resource) {
   return $resource('data/client.json');
 });
+
+angular.module('jsonWeekService', ['ngResource'])
+.factory('JsonWeekService', function($resource) {
+  return $resource('data/weeks.json');
+});
