@@ -37,7 +37,7 @@
     <li id="impressions">
       <a ng-href="#" class='aPadding'>
         <div class="metricTitle">Impressions</div>
-        <div><div class="count">{{currentDayImpressions}} </div>
+        <div><div class="count">{{dayNowImpressions}} </div>
         <div class="delta">{{deltaImpressions}}</div></div>
       </a>
     </li>
@@ -45,7 +45,7 @@
     <li id='shares'>
       <a ng-href="#" class='aPadding'>
         <div class="metricTitle">Shares</div>
-        <div><div class="count">{{currentDayShares}} </div>
+        <div><div class="count">{{dayNowShares}} </div>
         <div class="delta">{{deltaShares}}</div></div>
       </a>
     </li>
@@ -53,7 +53,7 @@
     <li id='visits'>
       <a ng-href="#" class='aPadding'>
         <div class="metricTitle">Visits</div>
-        <div><div class="count">{{currentDayVisits}} </div>
+        <div><div class="count">{{dayNowVisits}} </div>
         <div class="delta">{{deltaVisits}}</div></div>
       </a>
     </li>
@@ -61,7 +61,7 @@
     <li id='conversions'>
       <a ng-href="#" class='aPadding'>
         <div class="metricTitle">Conversions</div>
-        <div><div class="count">{{currentDayConversions}} </div>
+        <div><div class="count">{{dayNowConversions}} </div>
         <div class="delta">{{deltaConversions}}</div></div>
       </a>
     </li>
@@ -71,7 +71,7 @@
 
   <div class="jumbotron col-md-9">
     <!-- <p><canvas barchart options="options" data="lineChart" width="900" height="300"></canvas></p> -->
-    <p><canvas chart type="Line" options="options" data="lineChart" width="650" height="350"></canvas></p>
+    <p><canvas chart type="Line" options="dayOptions" data="dayChart" width="650" height="350"></canvas></p>
 
   </div>
 
@@ -80,3 +80,19 @@
 <div class="footer">
   <p>♥ from the Rummble Labs team</p>
 </div>
+
+{{day1Impressions}}
+{{day2Impressions}}
+{{day3Impressions}}
+{{day4Impressions}}
+{{day5Impressions}}
+{{day6Impressions}}
+{{day7Impressions}}
+{{day8Impressions}}
+{{day9Impressions}}
+{{day10Impressions}}
+{{day11Impressions}}
+{{day12Impressions}}
+{{dayPreviousImpressions}}
+{{dayNowImpressions}}
+
