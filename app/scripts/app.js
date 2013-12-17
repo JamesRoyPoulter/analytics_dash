@@ -12,11 +12,19 @@ angular.module('yeomanTestApp', [
 ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
+      .when('/days', {
+        templateUrl: 'views/days.html',
+        controller: 'MainCtrl'
+      })
+      .when('/weeks', {
+        templateUrl: 'views/weeks.html',
+        controller: 'MainCtrl'
+      })
+      .when('/months', {
+        templateUrl: 'views/months.html',
         controller: 'MainCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/days'
       });
   });

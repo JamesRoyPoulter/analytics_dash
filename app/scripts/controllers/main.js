@@ -159,7 +159,7 @@ angular.module('yeomanTestApp')
       $scope.monthDeltaVisits = Math.round((($scope.monthNowVisits/$scope.monthPreviousVisits)*100)-100)+'%';
       $scope.monthDeltaConversions = Math.round((($scope.monthNowConversions/$scope.monthPreviousConversions)*100)-100)+'%';
 
-      // 8 week graph data
+      // 6 month graph data
       // get current month
       var currentMonth = currentDate.getMonth();
       var monthData = $scope.weekData.months;
@@ -170,7 +170,7 @@ angular.module('yeomanTestApp')
         if (data.days[iv].day.getMonth() >= currentMonth-6) {
           // iterate through every month to find one that matches
           for (var v = 0; v <monthData.length; v++) {
-            //  if day's current week number matches week we are looping through, add metrics to that week
+            //  if day's current month number matches month we are looping through, add metrics to that month
             if (data.days[iv].day.getAdjustedMonthNumber() === v+1) {
               monthData[v].impressions = monthData[v].impressions + data.days[iv].impressions;
               monthData[v].shares = monthData[v].shares + data.days[iv].shares;
