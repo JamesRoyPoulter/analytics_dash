@@ -60,73 +60,20 @@ angular.module('yeomanTestApp')
       $scope.dayPreviousShares = data.days[1].shares;
       $scope.dayPreviousVisits = data.days[1].fbclicks;
       $scope.dayPreviousConversions = data.days[1].conversions;
+      // 14 day graph data
+      for (var k = 0; k < 14; k++) {
+        // slice array to last 14 days, then reverse them to put in correct order for graph
+        var slicedDays = data.days.slice(0,14).reverse();
+        $scope.weekData.days[k].impressions = slicedDays[k].impressions;
+        $scope.weekData.days[k].shares = slicedDays[k].shares;
+        $scope.weekData.days[k].visits = slicedDays[k].fbclicks;
+        $scope.weekData.days[k].conversions = slicedDays[k].conversions;
+      }
       // deltas
       $scope.dayDeltaImpressions = Math.round(((data.days[0].impressions/data.days[1].impressions)*100)-100)+'%';
       $scope.dayDeltaShares = Math.round(((data.days[0].shares/data.days[1].shares)*100)-100)+'%';
       $scope.dayDeltaVisits = Math.round(((data.days[0].fbclicks/data.days[1].fbclicks)*100)-100)+'%';
       $scope.dayDeltaConversions = Math.round(((data.days[0].conversions/data.days[1].conversions)*100)-100)+'%';
-      // 14 day graph data
-      // day 12
-      $scope.day12Impressions = data.days[2].impressions;
-      $scope.day12Shares = data.days[2].shares;
-      $scope.day12Visits = data.days[2].fbclicks;
-      $scope.day12Conversions = data.days[2].conversions;
-      // day 11
-      $scope.day11Impressions = data.days[3].impressions;
-      $scope.day11Shares = data.days[3].shares;
-      $scope.day11Visits = data.days[3].fbclicks;
-      $scope.day11Conversions = data.days[3].conversions;
-      // day 10
-      $scope.day10Impressions = data.days[4].impressions;
-      $scope.day10Shares = data.days[4].shares;
-      $scope.day10Visits = data.days[4].fbclicks;
-      $scope.day10Conversions = data.days[4].conversions;
-      // day 9
-      $scope.day9Impressions = data.days[5].impressions;
-      $scope.day9Shares = data.days[5].shares;
-      $scope.day9Visits = data.days[5].fbclicks;
-      $scope.day9Conversions = data.days[5].conversions;
-      // day 8
-      $scope.day8Impressions = data.days[6].impressions;
-      $scope.day8Shares = data.days[6].shares;
-      $scope.day8Visits = data.days[6].fbclicks;
-      $scope.day8Conversions = data.days[6].conversions;
-      // day 7
-      $scope.day7Impressions = data.days[7].impressions;
-      $scope.day7Shares = data.days[7].shares;
-      $scope.day7Visits = data.days[7].fbclicks;
-      $scope.day7Conversions = data.days[7].conversions;
-      // day 6
-      $scope.day6Impressions = data.days[8].impressions;
-      $scope.day6Shares = data.days[8].shares;
-      $scope.day6Visits = data.days[8].fbclicks;
-      $scope.day6Conversions = data.days[8].conversions;
-      // day 5
-      $scope.day5Impressions = data.days[9].impressions;
-      $scope.day5Shares = data.days[9].shares;
-      $scope.day5Visits = data.days[9].fbclicks;
-      $scope.day5Conversions = data.days[9].conversions;
-      // day 4
-      $scope.day4Impressions = data.days[10].impressions;
-      $scope.day4Shares = data.days[10].shares;
-      $scope.day4Visits = data.days[10].fbclicks;
-      $scope.day4Conversions = data.days[10].conversions;
-      // day 3
-      $scope.day3Impressions = data.days[11].impressions;
-      $scope.day3Shares = data.days[11].shares;
-      $scope.day3Visits = data.days[11].fbclicks;
-      $scope.day3Conversions = data.days[11].conversions;
-      // day 2
-      $scope.day2Impressions = data.days[12].impressions;
-      $scope.day2Shares = data.days[12].shares;
-      $scope.day2Visits = data.days[12].fbclicks;
-      $scope.day2Conversions = data.days[12].conversions;
-      // day 1
-      $scope.day1Impressions = data.days[13].impressions;
-      $scope.day1Shares = data.days[13].shares;
-      $scope.day1Visits = data.days[13].fbclicks;
-      $scope.day1Conversions = data.days[13].conversions;
-
 
       // WEEK DATA ------------------------------------------------
       $scope.weekNowImpressions = 0;
@@ -194,7 +141,7 @@ angular.module('yeomanTestApp')
               strokeColor : '#3C6CE6',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#3C6CE6',
-              data : [$scope.day1Impressions, $scope.day2Impressions, $scope.day3Impressions, $scope.day4Impressions, $scope.day5Impressions, $scope.day6Impressions, $scope.day7Impressions, $scope.day8Impressions, $scope.day9Impressions, $scope.day10Impressions, $scope.day11Impressions, $scope.day12Impressions, $scope.dayPreviousImpressions, $scope.dayNowImpressions]
+              data : [$scope.weekData.days[0].impressions, $scope.weekData.days[1].impressions, $scope.weekData.days[2].impressions, $scope.weekData.days[3].impressions, $scope.weekData.days[4].impressions, $scope.weekData.days[5].impressions, $scope.weekData.days[6].impressions, $scope.weekData.days[7].impressions, $scope.weekData.days[8].impressions, $scope.weekData.days[9].impressions, $scope.weekData.days[10].impressions, $scope.weekData.days[11].impressions, $scope.weekData.days[12].impressions, $scope.weekData.days[13].impressions]
             },
             {
               fillColor : 'rgba(151,187,205,0)',

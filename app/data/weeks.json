@@ -8,5 +8,21 @@
     {"week6":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
     {"week7":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
     {"week8":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
+  ],
+  "days": [
+    {"day1":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day2":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day3":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day4":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day5":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day6":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day7":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day8":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day9":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day10":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day11":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day12":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day13":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"day14":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
   ]
 }
