@@ -14,15 +14,15 @@ angular.module('yeomanTestApp', [
     $routeProvider
       .when('/days', {
         templateUrl: 'views/days.html',
-        controller: 'MainCtrl'
+        controller: 'DaysCtrl'
       })
       .when('/weeks', {
         templateUrl: 'views/weeks.html',
-        controller: 'MainCtrl'
+        controller: 'WeeksCtrl'
       })
       .when('/months', {
         templateUrl: 'views/months.html',
-        controller: 'MainCtrl'
+        controller: 'MonthsCtrl'
       })
       .otherwise({
         redirectTo: '/days'
