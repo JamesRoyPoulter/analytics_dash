@@ -1,5 +1,6 @@
 things to do
 
+START   at populating rest of day graph
 
 - make chart width change dynamicallky on page load with javascript getting screen.width
 - make y axis labels dynamic according to the data being pulled through. i.e 1- 10. 1- 1000. 500 -1000
@@ -9,6 +10,7 @@ things to do
 - make so much DRYer
 - so much DRYer
 - strip out weeks.json
+- don't actually need previous days
 
 
       // // day 11

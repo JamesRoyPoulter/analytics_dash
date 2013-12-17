@@ -62,7 +62,7 @@ angular.module('yeomanTestApp')
       $scope.dayPreviousConversions = data.days[1].conversions;
       // 14 day graph data
       for (var k = 0; k < 14; k++) {
-        // slice array to last 14 days, then reverse them to put in correct order for graph
+        // slice days array to last 14 days, then reverse them to put in correct order for graph
         var slicedDays = data.days.slice(0,14).reverse();
         $scope.weekData.days[k].impressions = slicedDays[k].impressions;
         $scope.weekData.days[k].shares = slicedDays[k].shares;
@@ -74,6 +74,7 @@ angular.module('yeomanTestApp')
       $scope.dayDeltaShares = Math.round(((data.days[0].shares/data.days[1].shares)*100)-100)+'%';
       $scope.dayDeltaVisits = Math.round(((data.days[0].fbclicks/data.days[1].fbclicks)*100)-100)+'%';
       $scope.dayDeltaConversions = Math.round(((data.days[0].conversions/data.days[1].conversions)*100)-100)+'%';
+
 
       // WEEK DATA ------------------------------------------------
       $scope.weekNowImpressions = 0;
@@ -105,7 +106,6 @@ angular.module('yeomanTestApp')
       $scope.weekDeltaVisits = Math.round((($scope.weekNowVisits/$scope.weekPreviousVisits)*100)-100)+'%';
       $scope.weekDeltaConversions = Math.round((($scope.weekNowConversions/$scope.weekPreviousConversions)*100)-100)+'%';
 
-
       // 8 week graph data
       // get current week
       var currentDate = new Date();
@@ -132,6 +132,7 @@ angular.module('yeomanTestApp')
       //  MONTH DATA -----------------------------------------
       //current month
 
+
       //  DAY GRAPH
       $scope.dayChart = {
         labels : ['1','2','3','4','5','6','7','8','9','10','11','12','13','14'],
@@ -148,21 +149,21 @@ angular.module('yeomanTestApp')
               strokeColor : '#F78F1E',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#F78F1E',
-              data : [$scope.day1Shares, $scope.day2Shares, $scope.day3Shares, $scope.day4Shares, $scope.day5Shares, $scope.day6Shares, $scope.day7Shares, $scope.day8Shares, $scope.day9Shares, $scope.day10Shares, $scope.day11Shares, $scope.day12Shares, $scope.dayPreviousShares, $scope.dayNowShares]
+              data : [$scope.weekData.days[0].shares, $scope.weekData.days[1].shares, $scope.weekData.days[2].shares, $scope.weekData.days[3].shares, $scope.weekData.days[4].shares, $scope.weekData.days[5].shares, $scope.weekData.days[6].shares, $scope.weekData.days[7].shares, $scope.weekData.days[8].shares, $scope.weekData.days[9].shares, $scope.weekData.days[10].shares, $scope.weekData.days[11].shares, $scope.weekData.days[12].shares, $scope.weekData.days[13].shares]
             },
             {
               fillColor : 'rgba(151,187,205,0)',
               strokeColor : '#10AAE9',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#10AAE9',
-              data : [$scope.day1Visits, $scope.day2Visits, $scope.day3Visits, $scope.day4Visits, $scope.day5Visits, $scope.day6Visits, $scope.day7Visits, $scope.day8Visits, $scope.day9Visits, $scope.day10Visits, $scope.day11Visits, $scope.day12Visits, $scope.dayPreviousVisits, $scope.dayNowVisits]
+              data : [$scope.weekData.days[0].visits, $scope.weekData.days[1].visits, $scope.weekData.days[2].visits, $scope.weekData.days[3].visits, $scope.weekData.days[4].visits, $scope.weekData.days[5].visits, $scope.weekData.days[6].visits, $scope.weekData.days[7].visits, $scope.weekData.days[8].visits, $scope.weekData.days[9].visits, $scope.weekData.days[10].visits, $scope.weekData.days[11].visits, $scope.weekData.days[12].visits, $scope.weekData.days[13].visits]
             },
             {
               fillColor : 'rgba(151,187,205,0)',
               strokeColor : '#f1c40f',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#f1c40f',
-              data : [$scope.day1Conversions, $scope.day2Conversions, $scope.day3Conversions, $scope.day4Conversions, $scope.day5Conversions, $scope.day6Conversions, $scope.day7Conversions, $scope.day8Conversions, $scope.day9Conversions, $scope.day10Conversions, $scope.day11Conversions, $scope.day12Conversions, $scope.dayPreviousConversions, $scope.dayNowConversions]
+              data : [$scope.weekData.days[0].conversions, $scope.weekData.days[1].conversions, $scope.weekData.days[2].conversions, $scope.weekData.days[3].conversions, $scope.weekData.days[4].conversions, $scope.weekData.days[5].conversions, $scope.weekData.days[6].conversions, $scope.weekData.days[7].conversions, $scope.weekData.days[8].conversions, $scope.weekData.days[9].conversions, $scope.weekData.days[10].conversions, $scope.weekData.days[11].conversions, $scope.weekData.days[12].conversions, $scope.weekData.days[13].conversions]
             }
           ],
         };
