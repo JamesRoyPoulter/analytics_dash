@@ -282,21 +282,21 @@ angular.module('yeomanTestApp')
               strokeColor : '#F78F1E',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#F78F1E',
-              data : [weekData.weeks[0].impressions, weekData.weeks[1].impressions, weekData.weeks[2].impressions, weekData.weeks[3].impressions, weekData.weeks[4].impressions, weekData.weeks[5].impressions, weekData.weeks[6].impressions, weekData.weeks[7].impressions, ]
+              data : [weekData.weeks[0].shares, weekData.weeks[1].shares, weekData.weeks[2].shares, weekData.weeks[3].shares, weekData.weeks[4].shares, weekData.weeks[5].shares, weekData.weeks[6].shares, weekData.weeks[7].shares, ]
             },
             {
               fillColor : 'rgba(151,187,205,0)',
               strokeColor : '#10AAE9',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#10AAE9',
-              data : [weekData.weeks[0].impressions, weekData.weeks[1].impressions, weekData.weeks[2].impressions, weekData.weeks[3].impressions, weekData.weeks[4].impressions, weekData.weeks[5].impressions, weekData.weeks[6].impressions, weekData.weeks[7].impressions, ]
+              data : [weekData.weeks[0].fbclicks, weekData.weeks[1].fbclicks, weekData.weeks[2].fbclicks, weekData.weeks[3].fbclicks, weekData.weeks[4].fbclicks, weekData.weeks[5].fbclicks, weekData.weeks[6].fbclicks, weekData.weeks[7].fbclicks, ]
             },
             {
               fillColor : 'rgba(151,187,205,0)',
               strokeColor : '#f1c40f',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#f1c40f',
-              data : [weekData.weeks[0].impressions, weekData.weeks[1].impressions, weekData.weeks[2].impressions, weekData.weeks[3].impressions, weekData.weeks[4].impressions, weekData.weeks[5].impressions, weekData.weeks[6].impressions, weekData.weeks[7].impressions, ]
+              data : [weekData.weeks[0].conversions, weekData.weeks[1].conversions, weekData.weeks[2].conversions, weekData.weeks[3].conversions, weekData.weeks[4].conversions, weekData.weeks[5].conversions, weekData.weeks[6].conversions, weekData.weeks[7].conversions, ]
             }
           ],
         };
@@ -307,6 +307,51 @@ angular.module('yeomanTestApp')
         scaleSteps : 6,
         //Number - The value jump in the hard coded scale
         scaleStepWidth : 2500,
+        //Number - The scale starting value
+        scaleStartValue : 1,
+      };
+
+      //  MONTH GRAPH
+      $scope.monthChart = {
+        labels : [currentWeek-7,currentWeek-6,currentWeek-5,currentWeek-4,currentWeek-3,currentWeek-2,currentWeek-1,currentWeek],
+        datasets : [
+          {
+              fillColor : 'rgba(151,187,205,0)',
+              strokeColor : '#3C6CE6',
+              pointColor : 'rgba(151,187,205,0)',
+              pointStrokeColor : '#3C6CE6',
+              data : [weekData.weeks[0].impressions, weekData.weeks[1].impressions, weekData.weeks[2].impressions, weekData.weeks[3].impressions, weekData.weeks[4].impressions, weekData.weeks[5].impressions, weekData.weeks[6].impressions, weekData.weeks[7].impressions, ]
+            },
+            {
+              fillColor : 'rgba(151,187,205,0)',
+              strokeColor : '#F78F1E',
+              pointColor : 'rgba(151,187,205,0)',
+              pointStrokeColor : '#F78F1E',
+              data : [weekData.weeks[0].shares, weekData.weeks[1].shares, weekData.weeks[2].shares, weekData.weeks[3].shares, weekData.weeks[4].shares, weekData.weeks[5].shares, weekData.weeks[6].shares, weekData.weeks[7].shares, ]
+            },
+            {
+              fillColor : 'rgba(151,187,205,0)',
+              strokeColor : '#10AAE9',
+              pointColor : 'rgba(151,187,205,0)',
+              pointStrokeColor : '#10AAE9',
+              data : [weekData.weeks[0].fbclicks, weekData.weeks[1].fbclicks, weekData.weeks[2].fbclicks, weekData.weeks[3].fbclicks, weekData.weeks[4].fbclicks, weekData.weeks[5].fbclicks, weekData.weeks[6].fbclicks, weekData.weeks[7].fbclicks, ]
+            },
+            {
+              fillColor : 'rgba(151,187,205,0)',
+              strokeColor : '#f1c40f',
+              pointColor : 'rgba(151,187,205,0)',
+              pointStrokeColor : '#f1c40f',
+              data : [weekData.weeks[0].conversions, weekData.weeks[1].conversions, weekData.weeks[2].conversions, weekData.weeks[3].conversions, weekData.weeks[4].conversions, weekData.weeks[5].conversions, weekData.weeks[6].conversions, weekData.weeks[7].conversions, ]
+            }
+          ],
+        };
+      $scope.monthOptions = {
+        scaleLineColor : 'rgba(0,0,0,.1)',
+        scaleOverride : true,
+        //Number - The number of steps in a hard coded scale
+        scaleSteps : 6,
+        //Number - The value jump in the hard coded scale
+        scaleStepWidth : 10000,
         //Number - The scale starting value
         scaleStartValue : 1,
       };
