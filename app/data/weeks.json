@@ -1,4 +1,12 @@
 {
+    "months": [
+    {"month1":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"month2":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"month3":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"month4":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"month5":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"month6":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
+  ],
   "weeks": [
     {"week1":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
     {"week2":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
