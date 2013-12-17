@@ -31,6 +31,17 @@ angular.module('yeomanTestApp')
           return Math.ceil((((d-new Date(d.getFullYear(),0,1))/8.64e7)+1)/7);
         };
 
+      Date.prototype.getAdjustedWeekNumber = function(){
+        // var weekNumber = x.getWeekNumber();
+        // var adjustedWeekNumber = weekNumber - currentWeek + 8;
+        // return adjustedWeekNumber;
+        var d = new Date(+this);
+        d.setHours(0,0,0);
+        d.setDate(d.getDate()+4-(d.getDay()||7));
+        var test3 = Math.ceil((((d-new Date(d.getFullYear(),0,1))/8.64e7)+1)/7);
+        return test3 - currentWeek + 8;
+      };
+
       //  convert all date strings into date time objects
       for (var a = 0; a < data.days.length; a++) {
         var splitDate;
@@ -190,20 +201,22 @@ angular.module('yeomanTestApp')
       var currentWeek = currentDate.getWeekNumber();
       var weekData = $scope.weekData;
 
-      // if data.days[x].day.getWeekNumber matches currentWeek - x then push into week array?
-      // or just then add to that week's totals.  push the days. better.
-
+      //  for each day in day data
       for (var ii = 0; ii < data.days.length; ii++) {
+        // if the day is within the last 8 weeks
         if (data.days[ii].day.getWeekNumber() >= currentWeek-7) {
-          weekData.week8[0].impressions = weekData.week8[0].impressions + data.days[ii].impressions;
-          weekData.week8[0].shares = weekData.week8[0].shares + data.days[ii].shares;
-          weekData.week8[0].fbclicks = weekData.week8[0].fbclicks + data.days[ii].fbclicks;
-          weekData.week8[0].conversions = weekData.week8[0].conversions + data.days[ii].conversions;
+          // iterate through every week to find one that matches
+          for (var iii = 0; iii <weekData.weeks.length; iii++) {
+            //  if day's current week number matches week we are looping through, add metrics to that week
+            if (data.days[ii].day.getAdjustedWeekNumber() === iii+1) {
+              weekData.weeks[iii].impressions = weekData.weeks[iii].impressions + data.days[ii].impressions;
+              weekData.weeks[iii].shares = weekData.weeks[iii].shares + data.days[ii].shares;
+              weekData.weeks[iii].fbclicks = weekData.weeks[iii].fbclicks + data.days[ii].fbclicks;
+              weekData.weeks[iii].conversions = weekData.weeks[iii].conversions + data.days[ii].conversions;
+            }
+          }
         }
       }
-
-
-
 
       //  MONTH DATA -----------------------------------------
       //current month
@@ -255,35 +268,35 @@ angular.module('yeomanTestApp')
 
       //  WEEK GRAPH
       $scope.weekChart = {
-        labels : [currentWeek-13, currentWeek -12,currentWeek-11,currentWeek-10,currentWeek-9,currentWeek-8,currentWeek-7,currentWeek-6,currentWeek-5,currentWeek-4,currentWeek-3,currentWeek-2,currentWeek-1,currentWeek],
+        labels : [currentWeek-7,currentWeek-6,currentWeek-5,currentWeek-4,currentWeek-3,currentWeek-2,currentWeek-1,currentWeek],
         datasets : [
           {
               fillColor : 'rgba(151,187,205,0)',
               strokeColor : '#3C6CE6',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#3C6CE6',
-              data : [$scope.day1Impressions, $scope.day2Impressions, $scope.day3Impressions, $scope.day4Impressions, $scope.day5Impressions, $scope.day6Impressions, $scope.day7Impressions, $scope.day8Impressions, $scope.day9Impressions, $scope.day10Impressions, $scope.day11Impressions, $scope.day12Impressions, $scope.dayPreviousImpressions, $scope.dayNowImpressions]
+              data : [weekData.weeks[0].impressions, weekData.weeks[1].impressions, weekData.weeks[2].impressions, weekData.weeks[3].impressions, weekData.weeks[4].impressions, weekData.weeks[5].impressions, weekData.weeks[6].impressions, weekData.weeks[7].impressions, ]
             },
             {
               fillColor : 'rgba(151,187,205,0)',
               strokeColor : '#F78F1E',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#F78F1E',
-              data : [$scope.day1Shares, $scope.day2Shares, $scope.day3Shares, $scope.day4Shares, $scope.day5Shares, $scope.day6Shares, $scope.day7Shares, $scope.day8Shares, $scope.day9Shares, $scope.day10Shares, $scope.day11Shares, $scope.day12Shares, $scope.dayPreviousShares, $scope.dayNowShares]
+              data : [weekData.weeks[0].impressions, weekData.weeks[1].impressions, weekData.weeks[2].impressions, weekData.weeks[3].impressions, weekData.weeks[4].impressions, weekData.weeks[5].impressions, weekData.weeks[6].impressions, weekData.weeks[7].impressions, ]
             },
             {
               fillColor : 'rgba(151,187,205,0)',
               strokeColor : '#10AAE9',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#10AAE9',
-              data : [$scope.day1Visits, $scope.day2Visits, $scope.day3Visits, $scope.day4Visits, $scope.day5Visits, $scope.day6Visits, $scope.day7Visits, $scope.day8Visits, $scope.day9Visits, $scope.day10Visits, $scope.day11Visits, $scope.day12Visits, $scope.dayPreviousVisits, $scope.dayNowVisits]
+              data : [weekData.weeks[0].impressions, weekData.weeks[1].impressions, weekData.weeks[2].impressions, weekData.weeks[3].impressions, weekData.weeks[4].impressions, weekData.weeks[5].impressions, weekData.weeks[6].impressions, weekData.weeks[7].impressions, ]
             },
             {
               fillColor : 'rgba(151,187,205,0)',
               strokeColor : '#f1c40f',
               pointColor : 'rgba(151,187,205,0)',
               pointStrokeColor : '#f1c40f',
-              data : [$scope.day1Conversions, $scope.day2Conversions, $scope.day3Conversions, $scope.day4Conversions, $scope.day5Conversions, $scope.day6Conversions, $scope.day7Conversions, $scope.day8Conversions, $scope.day9Conversions, $scope.day10Conversions, $scope.day11Conversions, $scope.day12Conversions, $scope.dayPreviousConversions, $scope.dayNowConversions]
+              data : [weekData.weeks[0].impressions, weekData.weeks[1].impressions, weekData.weeks[2].impressions, weekData.weeks[3].impressions, weekData.weeks[4].impressions, weekData.weeks[5].impressions, weekData.weeks[6].impressions, weekData.weeks[7].impressions, ]
             }
           ],
         };
@@ -293,7 +306,7 @@ angular.module('yeomanTestApp')
         //Number - The number of steps in a hard coded scale
         scaleSteps : 6,
         //Number - The value jump in the hard coded scale
-        scaleStepWidth : 300,
+        scaleStepWidth : 2500,
         //Number - The scale starting value
         scaleStartValue : 1,
       };

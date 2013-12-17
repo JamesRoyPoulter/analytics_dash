@@ -1,74 +1,12 @@
 {
-  "week8": [
-    {"m": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"tu": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"w": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"th": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"f": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"sa": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"su": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
-    ],
-  "week7": [
-    {"m": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"tu": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"w": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"th": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"f": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"sa": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"su": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
-    ],
-  "week6": [
-    {"m": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"tu": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"w": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"th": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"f": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"sa": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"su": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
-    ],
-  "week5": [
-    {"m": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"tu": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"w": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"th": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"f": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"sa": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"su": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
-    ],
-  "week4": [
-    {"m": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"tu": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"w": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"th": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"f": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"sa": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"su": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
-    ],
-  "week3": [
-    {"m": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"tu": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"w": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"th": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"f": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"sa": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"su": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
-    ],
-  "week2": [
-    {"m": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"tu": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"w": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"th": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"f": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"sa": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"su": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
-    ],
-  "week1": [
-    {"m": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"tu": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"w": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"th": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"f": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"sa": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
-    {"su": 0, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
-    ]
-  }
+  "weeks": [
+    {"week1":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"week2":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"week3":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"week4":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"week5":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"week6":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"week7":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 },
+    {"week8":true, "impressions": 0, "shares": 0, "fbclicks": 0, "conversions": 0 }
+  ]
+}
