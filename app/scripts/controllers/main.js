@@ -129,63 +129,28 @@ angular.module('yeomanTestApp')
 
 
       // WEEK DATA ------------------------------------------------
+      $scope.weekNowImpressions = 0;
+      $scope.weekNowShares = 0;
+      $scope.weekNowVisits = 0;
+      $scope.weekNowConversions = 0;
+      $scope.weekPreviousImpressions = 0;
+      $scope.weekPreviousShares = 0;
+      $scope.weekPreviousVisits = 0;
+      $scope.weekPreviousConversions = 0;
       // current week
-      // impressions
-      var lastSevenImpressions = 0;
       for (var i = 0; i < 6; i++) {
-        lastSevenImpressions = lastSevenImpressions + data.days[i].impressions;
+        $scope.weekNowImpressions = $scope.weekNowImpressions + data.days[i].impressions;
+        $scope.weekNowShares = $scope.weekNowShares + data.days[i].shares;
+        $scope.weekNowVisits = $scope.weekNowVisits + data.days[i].fbclicks;
+        $scope.weekNowConversions = $scope.weekNowConversions + data.days[i].conversions;
       }
-      $scope.weekNowImpressions = lastSevenImpressions;
-
-      // shares
-      var lastSevenShares = 0;
-      for (var j = 0; j < 6; j++) {
-        lastSevenShares = lastSevenShares + data.days[j].shares;
-      }
-      $scope.weekNowShares = lastSevenShares;
-
-      // visits
-      var lastSevenVisits = 0;
-      for (var k = 0; k < 6; k++) {
-        lastSevenVisits = lastSevenVisits + data.days[k].fbclicks;
-      }
-      $scope.weekNowVisits = lastSevenVisits;
-
-      // conversions
-      var lastSevenConversions = 0;
-      for (var l = 0; l < 6; l++) {
-        lastSevenConversions = lastSevenConversions + data.days[l].conversions;
-      }
-      $scope.weekNowConversions = lastSevenConversions;
-
       // previous week
-      // impressions
-      var previousSevenImpressions = 0;
-      for (var m = 7; m < 13; m++) {
-        previousSevenImpressions = previousSevenImpressions + data.days[m].impressions;
+      for (var j = 7; j < 13; j++) {
+        $scope.weekPreviousImpressions = $scope.weekPreviousImpressions + data.days[j].impressions;
+        $scope.weekPreviousShares = $scope.weekPreviousShares + data.days[j].shares;
+        $scope.weekPreviousVisits = $scope.weekPreviousVisits + data.days[j].fbclicks;
+        $scope.weekPreviousConversions = $scope.weekPreviousConversions + data.days[j].conversions;
       }
-      $scope.weekPreviousImpressions = previousSevenImpressions;
-
-      // shares
-      var previousSevenShares = 0;
-      for (var n = 7; n < 13; n++) {
-        previousSevenShares = previousSevenShares + data.days[n].shares;
-      }
-      $scope.weekPreviousShares = previousSevenShares;
-
-      // visits
-      var previousSevenVisits = 0;
-      for (var o = 7; o < 13; o++) {
-        previousSevenVisits = previousSevenVisits + data.days[o].fbclicks;
-      }
-      $scope.weekPreviousVisits = previousSevenVisits;
-
-      // conversions
-      var previousSevenConversions = 0;
-      for (var p = 7; p < 13; p++) {
-        previousSevenConversions = previousSevenConversions + data.days[p].conversions;
-      }
-      $scope.weekPreviousConversions = previousSevenConversions;
 
       // deltas
       $scope.weekDeltaImpressions = Math.round((($scope.weekNowImpressions/$scope.weekPreviousImpressions)*100)-100)+'%';
@@ -195,7 +160,6 @@ angular.module('yeomanTestApp')
 
 
       // 8 week graph data
-
       // get current week
       var currentDate = new Date();
       var currentWeek = currentDate.getWeekNumber();
