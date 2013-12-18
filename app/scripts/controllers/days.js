@@ -33,73 +33,53 @@ angular.module('yeomanTestApp')
         data.days[a].day = new Date(splitDate.slice(0,3).join('/')+' '+splitDate[3]);
       }
 
-      //DAY DATA --------------------------------------------------
-      // current day
-      $scope.dayNowImpressions = data.days[0].impressions;
-      $scope.dayNowShares = data.days[0].shares;
-      $scope.dayNowVisits = data.days[0].fbclicks;
-      $scope.dayNowConversions = data.days[0].conversions;
-      // 14 day graph data
-      for (var k = 0; k < 14; k++) {
-        // slice days array to last 14 days, then reverse them to put in correct order for graph
-        var slicedDays = data.days.slice(0,14).reverse();
-        $scope.weekData.days[k].impressions = slicedDays[k].impressions;
-        $scope.weekData.days[k].shares = slicedDays[k].shares;
-        $scope.weekData.days[k].visits = slicedDays[k].fbclicks;
-        $scope.weekData.days[k].conversions = slicedDays[k].conversions;
-      }
-      // deltas
-      $scope.dayDeltaImpressions = Math.round(((data.days[0].impressions/data.days[1].impressions)*100)-100)+'%';
-      $scope.dayDeltaShares = Math.round(((data.days[0].shares/data.days[1].shares)*100)-100)+'%';
-      $scope.dayDeltaVisits = Math.round(((data.days[0].fbclicks/data.days[1].fbclicks)*100)-100)+'%';
-      $scope.dayDeltaConversions = Math.round(((data.days[0].conversions/data.days[1].conversions)*100)-100)+'%';
-
-      //  DAY GRAPHS
-
+      // get all day data for DOM and graphs
       var dayData = $scope.weekData.days;
       var lines = {};
+      // loop that iterates over all properties of days object in JSON
       for (var i in dayData[0]) {
+        var b = i+'DayNow';
+        var c = i+'DayDelta';
+        $scope[b] = data.days[0][i];
+        // 14 day graph data
+        for (var k = 0; k < 14; k++) {
+          // slice days array to last 14 days, then reverse them to put in correct order for graph
+          var slicedDays = data.days.slice(0,14).reverse();
+          $scope.weekData.days[k][i] = slicedDays[k][i];
+        }
+        // deltas
+        $scope[c] = Math.round(((data.days[0][i]/data.days[1][i])*100)-100)+'%';
+                // all the graph workings
         var y = i +'Data';
-        // if (i === 'impressions') {
         lines[i] = [];
         for ( var x = 0; x < 14; x++) {
           lines[i].push(dayData[x][i]);
         }
-        //  graph
-        console.log(i);
-        console.log(lines);
-        console.log(lines[i]);
-        // }
+        // the actual graph data
         $scope[i] = {
-          labels : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          labels : ['1','2','3','4','5','6','7','8','9','10','11','12','13','14'],
           datasets : [
               {
-                fillColor : "rgba(151,187,205,0)",
-                strokeColor : "#e67e22",
-                pointColor : "rgba(151,187,205,0)",
-                pointStrokeColor : "#e67e22",
-                data : lines.impressions
+                fillColor : 'rgba(151,187,205,0)',
+                strokeColor : '#e67e22',
+                pointColor : 'rgba(151,187,205,0)',
+                pointStrokeColor : '#e67e22',
+                data : lines[i]
               }
             ],
           };
+        // the actul graph options
         $scope[y] = {
           scaleLineColor : 'rgba(0,0,0,.1)',
           scaleOverride : true,
           //Number - The number of steps in a hard coded scale
-          scaleSteps : 3,
+          scaleSteps : 6,
           //Number - The value jump in the hard coded scale
           scaleStepWidth : 300,
           //Number - The scale starting value
-          scaleStartValue : 900,
+          scaleStartValue : 0,
         };
-      } // end of dayData[0] loop
-      $scope.test56 = i;
-      $scope.test56.conversions = i;
-      $scope.test57 = lines;
-      $scope.test58 = lines[i];
-      $scope.test59 = lines.impressions;
-      $scope.test60 = lines.shares;
-
+      }
     });
   });
 
