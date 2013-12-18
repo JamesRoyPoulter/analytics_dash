@@ -32,37 +32,46 @@
 
 <div class='row'>
 
-<div class="col-md-3">
-  <ul class="nav nav-pills nav-stacked">
-    <li id="impressions">
-        <div class="metricTitle">Impressions</div>
-        <div><div class="count">{{weekNowImpressions}} </div>
-        <div class="delta">{{weekDeltaImpressions}}</div></div>
-    </li>
+  <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+      <li id="impressions" ng-click="showImpressions=true;showShares=false;showVisits=false;showConversions=false">
+          <div class="metricTitle">Impressions</div>
+          <div><div class="count">{{impressionsWeekNow}} </div>
+          <div class="delta">{{impressionsWeekDelta}}</div></div>
+      </li>
 
-    <li id='shares'>
-        <div class="metricTitle">Shares</div>
-        <div><div class="count">{{weekNowShares}} </div>
-        <div class="delta">{{weekDeltaShares}}</div></div>
-    </li>
+      <li id='shares' ng-click="showShares=true;showImpressions=false;showVisits=false;showConversions=false">
+          <div class="metricTitle">Shares</div>
+          <div><div class="count">{{sharesWeekNow}} </div>
+          <div class="delta">{{sharesWeekDelta}}</div></div>
+      </li>
 
-    <li id='visits'>
-        <div class="metricTitle">Visits</div>
-        <div><div class="count">{{weekNowVisits}} </div>
-        <div class="delta">{{weekDeltaVisits}}</div></div>
-    </li>
+      <li id='visits' ng-click="showVisits=true;showImpressions=false;showShares=false;showConversions=false">
+          <div class="metricTitle">Visits</div>
+          <div><div class="count">{{fbclicksWeekNow}} </div>
+          <div class="delta">{{fbclicksWeekDelta}}</div></div>
+      </li>
 
-    <li id='conversions'>
-        <div class="metricTitle">Conversions</div>
-        <div><div class="count">{{weekNowConversions}} </div>
-        <div class="delta">{{weekDeltaConversions}}</div></div>
-    </li>
-  </ul>
-  <br>
-</div>
+      <li id='conversions' ng-click="showConversions=true;showImpressions=false;showShares=false;showVisits=false">
+          <div class="metricTitle">Conversions</div>
+          <div><div class="count">{{conversionsWeekNow}} </div>
+          <div class="delta">{{conversionsWeekDelta}}</div></div>
+      </li>
+    </ul>
+    <br>
+  </div>
 
-  <div class="jumbotron col-md-9">
-    <p><canvas chart type="Line" options="weekOptions" data="weekChart" width="650" height="350"></canvas></p>
+  <div class="jumbotron col-md-9" ng-show="showImpressions">
+    <canvas chart type="Line" options="impressionsData" data="impressions" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showShares">
+    <canvas chart type="Line" options="sharesData" data="shares" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showVisits">
+    <canvas chart type="Line" options="fbclicksData" data="fbclicks" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showConversions">
+    <canvas chart type="Line" options="conversionsData" data="conversions" width="650" height="350"></canvas>
   </div>
 
 </div><!-- closes row -->

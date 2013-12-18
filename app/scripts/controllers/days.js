@@ -18,14 +18,6 @@ angular.module('yeomanTestApp')
     // get days JSON
     JsonDayService.get(function(data){
 
-      // prototype function to get week number from dates
-      Date.prototype.getWeekNumber = function(){
-          var d = new Date(+this);
-          d.setHours(0,0,0);
-          d.setDate(d.getDate()+4-(d.getDay()||7));
-          return Math.ceil((((d-new Date(d.getFullYear(),0,1))/8.64e7)+1)/7);
-        };
-
       //  convert all date strings into date time objects
       for (var a = 0; a < data.days.length; a++) {
         var splitDate;
@@ -49,7 +41,7 @@ angular.module('yeomanTestApp')
         }
         // deltas
         $scope[c] = Math.round(((data.days[0][i]/data.days[1][i])*100)-100)+'%';
-                // all the graph workings
+        // all the graph workings
         var y = i +'Data';
         lines[i] = [];
         for ( var x = 0; x < 14; x++) {
