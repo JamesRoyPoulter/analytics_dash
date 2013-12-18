@@ -32,44 +32,46 @@
 
 <div class='row'>
 
-<div class="col-md-3">
-  <ul class="nav nav-pills nav-stacked">
-    <li id="impressions" ng-click="showImpressions = ! showImpressions">
-        <div class="metricTitle">Impressions</div>
-        <div><div class="count">{{impressionsDayNow}} </div>
-        <div class="delta">{{impressionsDayDelta}}</div></div>
-    </li>
+  <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+      <li id="impressions" ng-click="showImpressions=true;showShares=false;showVisits=false;showConversions=false">
+          <div class="metricTitle">Impressions</div>
+          <div><div class="count">{{impressionsDayNow}} </div>
+          <div class="delta">{{impressionsDayDelta}}</div></div>
+      </li>
 
-    <li id='shares' ng-click="showShares = ! showShares">
-        <div class="metricTitle">Shares</div>
-        <div><div class="count">{{sharesDayNow}} </div>
-        <div class="delta">{{sharesDayDelta}}</div></div>
-    </li>
+      <li id='shares' ng-click="showShares=true;showImpressions=false;showVisits=false;showConversions=false">
+          <div class="metricTitle">Shares</div>
+          <div><div class="count">{{sharesDayNow}} </div>
+          <div class="delta">{{sharesDayDelta}}</div></div>
+      </li>
 
-    <li id='visits' ng-click="showVisits = ! showVisits">
-        <div class="metricTitle">Visits</div>
-        <div><div class="count">{{fbclicksDayNow}} </div>
-        <div class="delta">{{fbclicksDayDelta}}</div></div>
-    </li>
+      <li id='visits' ng-click="showVisits=true;showImpressions=false;showShares=false;showConversions=false">
+          <div class="metricTitle">Visits</div>
+          <div><div class="count">{{fbclicksDayNow}} </div>
+          <div class="delta">{{fbclicksDayDelta}}</div></div>
+      </li>
 
-    <li id='conversions' ng-click="showConversions = ! showConversions">
-        <div class="metricTitle">Conversions</div>
-        <div><div class="count">{{conversionsDayNow}} </div>
-        <div class="delta">{{conversionsDayDelta}}</div></div>
-    </li>
-  </ul>
-  <br>
-</div>
+      <li id='conversions' ng-click="showConversions=true;showImpressions=false;showShares=false;showVisits=false">
+          <div class="metricTitle">Conversions</div>
+          <div><div class="count">{{conversionsDayNow}} </div>
+          <div class="delta">{{conversionsDayDelta}}</div></div>
+      </li>
+    </ul>
+    <br>
+  </div>
 
-  <!-- <div class="jumbotron col-md-9"> -->
-    <!-- <p><canvas chart type="Line" options="dayOptions" data="dayChart" width="650" height="350"></canvas></p> -->
-  <!-- </div> -->
-
-  <div class="jumbotron col-md-9">
-    <canvas chart type="Line" options="impressionsData" data="impressions" width="500" height="300"></canvas>
-    <canvas chart type="Line" options="sharesData" data="shares" width="500" height="300"></canvas>
-    <canvas chart type="Line" options="fbclicksData" data="fbclicks" width="500" height="300"></canvas>
-    <canvas chart type="Line" options="conversionsData" data="conversions" width="500" height="300"></canvas>
+  <div class="jumbotron col-md-9" ng-show="showImpressions">
+    <canvas chart type="Line" options="impressionsData" data="impressions" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showShares">
+    <canvas chart type="Line" options="sharesData" data="shares" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showVisits">
+    <canvas chart type="Line" options="fbclicksData" data="fbclicks" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showConversions">
+    <canvas chart type="Line" options="conversionsData" data="conversions" width="650" height="350"></canvas>
   </div>
 
 </div><!-- closes row -->
