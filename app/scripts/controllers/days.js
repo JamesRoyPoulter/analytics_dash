@@ -58,42 +58,57 @@ angular.module('yeomanTestApp')
 
       var dayData = $scope.weekData.days;
       var lines = {};
-      // $scope.dayChart = {};
-      // $scope.dayOptions = {};
       for (var i in dayData[0]) {
-        if (i === "impressions") {
+        var y = i +'Data';
+        // if (i === 'impressions') {
         lines[i] = [];
         for ( var x = 0; x < 14; x++) {
           lines[i].push(dayData[x][i]);
         }
-
         //  graph
         console.log(i);
         console.log(lines);
         console.log(lines[i]);
-        $scope.chartLine = {
-          labels : ['1','2','3','4','5','6','7','8','9','10','11','12','13','14'],
+        // }
+        $scope[i] = {
+          labels : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           datasets : [
-            {
-                fillColor : 'rgba(151,187,205,0)',
-                strokeColor : '#3C6CE6',
-                pointColor : 'rgba(151,187,205,0)',
-                pointStrokeColor : '#3C6CE6',
-                data : lines[i]
-              },
+              {
+                fillColor : "rgba(151,187,205,0)",
+                strokeColor : "#e67e22",
+                pointColor : "rgba(151,187,205,0)",
+                pointStrokeColor : "#e67e22",
+                data : lines.impressions
+              }
             ],
           };
-        $scope.chartOptions = {
+        $scope[y] = {
           scaleLineColor : 'rgba(0,0,0,.1)',
           scaleOverride : true,
           //Number - The number of steps in a hard coded scale
-          scaleSteps : 6,
+          scaleSteps : 3,
           //Number - The value jump in the hard coded scale
           scaleStepWidth : 300,
           //Number - The scale starting value
-          scaleStartValue : 0,
+          scaleStartValue : 900,
         };
-      }
       } // end of dayData[0] loop
+      $scope.test56 = i;
+      $scope.test56.conversions = i;
+      $scope.test57 = lines;
+      $scope.test58 = lines[i];
+      $scope.test59 = lines.impressions;
+      $scope.test60 = lines.shares;
+
     });
   });
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 things to do
 
-START   at populating rest of day graph
+START at working out why weeks work, but days doesn't. dom loading.
 
 - make chart width change dynamicallky on page load with javascript getting screen.width
 - make y axis labels dynamic according to the data being pulled through. i.e 1- 10. 1- 1000. 500 -1000
@@ -14,6 +14,7 @@ START   at populating rest of day graph
 - graph data is an array of data... push all data into array and just put that in the graph!
 - date util file.js
 
+ng-class="{ 'hidden': ! showImpressions }"
 
          // combined graph
         // $scope.dayChart = {

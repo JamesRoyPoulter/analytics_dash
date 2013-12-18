@@ -32,6 +32,12 @@
 
 <div class='row'>
 
+  {{test56.conversions}}<br><br>
+  {{test57}}<br><br>
+  {{test58}}<br><br>
+  {{test59}}<br><br>
+  {{test60}}
+
 <div class="col-md-3">
   <ul class="nav nav-pills nav-stacked">
     <li id="impressions" ng-click="showImpressions = ! showImpressions">
@@ -65,9 +71,10 @@
     <!-- <p><canvas chart type="Line" options="dayOptions" data="dayChart" width="650" height="350"></canvas></p> -->
   <!-- </div> -->
 
-  <div class="jumbotron col-md-9" ng-class="{ 'hidden': ! showImpressions }">
-    <p><canvas chart type="Line" options="chartLine" data="chartOptions" width="650" height="350"></canvas></p>
-  </div>
+  <div class="jumbotron col-md-9">
+    <canvas chart type="Line" options="impressionsData" data="impressions" width="500" height="300"></canvas>
+<!--     <p><canvas chart type="Line" options="chartLine" data="chartOptions" width="650" height="350"></canvas></p>
+  </div> -->
 
 <!--   <div class="jumbotron col-md-9" ng-class="{ 'hidden': ! showShares }">
     <p><canvas chart type="Line" options="dayOptions.shares" data="dayChart.shares" width="650" height="350"></canvas></p>
