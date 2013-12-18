@@ -42,7 +42,7 @@ angular.module('yeomanTestApp')
         // deltas
         $scope[c] = Math.round(((data.days[0][i]/data.days[1][i])*100)-100)+'%';
         // all the graph workings
-        var y = i +'Data';
+        var y = i +'Options';
         lines[i] = [];
         for ( var x = 0; x < 14; x++) {
           lines[i].push(dayData[x][i]);
