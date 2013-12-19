@@ -36,24 +36,28 @@
     <ul class="nav nav-pills nav-stacked">
       <li id="impressions" ng-click="showImpressions=true;showShares=false;showVisits=false;showConversions=false">
           <div class="metricTitle">Impressions</div>
+          <span class="glyphicon glyphicon-stats"></span>
           <div><div class="count">{{impressionsDayNow}} </div>
           <div class="delta">{{impressionsDayDelta}}</div></div>
       </li>
 
       <li id='shares' ng-click="showShares=true;showImpressions=false;showVisits=false;showConversions=false">
           <div class="metricTitle">Shares</div>
+          <span class="glyphicon glyphicon-stats"></span>
           <div><div class="count">{{sharesDayNow}} </div>
           <div class="delta">{{sharesDayDelta}}</div></div>
       </li>
 
       <li id='visits' ng-click="showVisits=true;showImpressions=false;showShares=false;showConversions=false">
           <div class="metricTitle">Visits</div>
+          <span class="glyphicon glyphicon-stats"></span>
           <div><div class="count">{{fbclicksDayNow}} </div>
           <div class="delta">{{fbclicksDayDelta}}</div></div>
       </li>
 
       <li id='conversions' ng-click="showConversions=true;showImpressions=false;showShares=false;showVisits=false">
           <div class="metricTitle">Conversions</div>
+          <span class="glyphicon glyphicon-stats"></span>
           <div><div class="count">{{conversionsDayNow}} </div>
           <div class="delta">{{conversionsDayDelta}}</div></div>
       </li>
