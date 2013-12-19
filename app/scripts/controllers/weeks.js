@@ -42,7 +42,7 @@ angular.module('yeomanTestApp')
         data.days[a].day = new Date(splitDate.slice(0,3).join('/')+' '+splitDate[3]);
       }
 
-      // WEEK DATA ------------------------------------------------
+      // WEEK DATA -----------------------------------------
       // get all day data for DOM and graphs
       var weekData = $scope.weekData.weeks;
       var lines = {};

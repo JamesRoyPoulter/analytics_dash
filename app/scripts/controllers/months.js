@@ -32,100 +32,124 @@ angular.module('yeomanTestApp')
         data.days[a].day = new Date(splitDate.slice(0,3).join('/')+' '+splitDate[3]);
       }
 
-      //  MONTH DATA -----------------------------------------
-      $scope.monthNowImpressions = 0;
-      $scope.monthNowShares = 0;
-      $scope.monthNowVisits = 0;
-      $scope.monthNowConversions = 0;
-      $scope.monthPreviousImpressions = 0;
-      $scope.monthPreviousShares = 0;
-      $scope.monthPreviousVisits = 0;
-      $scope.monthPreviousConversions = 0;
-      // current month
-      for (var m = 0; m < 27; m++) {
-        $scope.monthNowImpressions = $scope.monthNowImpressions + data.days[m].impressions;
-        $scope.monthNowShares = $scope.monthNowShares + data.days[m].shares;
-        $scope.monthNowVisits = $scope.monthNowVisits + data.days[m].fbclicks;
-        $scope.monthNowConversions = $scope.monthNowConversions + data.days[m].conversions;
-      }
-      // previous week
-      for (var l = 28; l < 55; l++) {
-        $scope.monthPreviousImpressions = $scope.monthPreviousImpressions + data.days[l].impressions;
-        $scope.monthPreviousShares = $scope.monthPreviousShares + data.days[l].shares;
-        $scope.monthPreviousVisits = $scope.monthPreviousVisits + data.days[l].fbclicks;
-        $scope.monthPreviousConversions = $scope.monthPreviousConversions + data.days[l].conversions;
-      }
-
-      // deltas
-      $scope.monthDeltaImpressions = Math.round((($scope.monthNowImpressions/$scope.monthPreviousImpressions)*100)-100)+'%';
-      $scope.monthDeltaShares = Math.round((($scope.monthNowShares/$scope.monthPreviousShares)*100)-100)+'%';
-      $scope.monthDeltaVisits = Math.round((($scope.monthNowVisits/$scope.monthPreviousVisits)*100)-100)+'%';
-      $scope.monthDeltaConversions = Math.round((($scope.monthNowConversions/$scope.monthPreviousConversions)*100)-100)+'%';
-
-      // 6 month graph data
+      //  MONTH DATA --------------------------------
+      // get all day data for DOM and graphs
+      var monthData = $scope.weekData.weeks;
+      var lines = {};
       // get current month
       var currentDate = new Date();
       var currentMonth = currentDate.getMonth();
-      var monthData = $scope.weekData.months;
+      // loop that iterates over all properties of days object in JSON
+      for (var i in monthData[0]) {
+        // current month
+        var b = i+'MonthNow';
+        $scope[b] = 0;
+        for (var ii = 0; ii < 27; ii++) {
+          $scope[b] = $scope[b] + data.days[ii][i];
+        }
+        // previous month
+        var monthPrevious = 0;
+        for (var j = 28; j < 55; j++) {
+          monthPrevious = monthPrevious + data.days[j][i];
+        }
+        // deltas
+        var d = i+'MonthDelta';
+        $scope[d] = Math.round((($scope[b]/monthPrevious)*100)-100)+'%';
 
-      //  for each day in day data
-      for (var iv = 0; iv < data.days.length; iv++) {
-        // if the day is within the last 6 months
-        if (data.days[iv].day.getMonth() >= currentMonth-6) {
-          // iterate through every month to find one that matches
-          for (var v = 0; v <monthData.length; v++) {
-            //  if day's current month number matches month we are looping through, add metrics to that month
-            if (data.days[iv].day.getAdjustedMonthNumber() === v+1) {
-              monthData[v].impressions = monthData[v].impressions + data.days[iv].impressions;
-              monthData[v].shares = monthData[v].shares + data.days[iv].shares;
-              monthData[v].fbclicks = monthData[v].fbclicks + data.days[iv].fbclicks;
-              monthData[v].conversions = monthData[v].conversions + data.days[iv].conversions;
+        // 6 month graph data
+        //  for each day in day data
+        for (var ii = 0; ii < data.days.length; ii++) {
+          // if the day is within the last 6 months
+          if (data.days[ii].day.getMonth() >= currentMonth-6) {
+            // iterate through every month to find one that matches
+            for (var iii = 0; iii < 7; iii++) {
+              //  if day's current month number matches month we are looping through, add metrics to that month
+              if (data.days[ii].day.getAdjustedMonthNumber() === iii+1) {
+                monthData[iii][i] = monthData[iii][i] + data.days[ii][i];
+
+              }
             }
           }
         }
+        // set individual line arrays to take graph metrics
+        lines[i] = [];
+        // push metrics into array
+        for ( var x = 0; x < 6; x++) {
+          lines[i].push(monthData[x][i]);
+        }
+        // set graph reference for dom
+        var y = i +'Options';
+        //  MONTH GRAPH
+        $scope[i] = {
+          labels : [currentMonth-4,currentMonth-3,currentMonth-2,currentMonth-1,currentMonth,currentMonth+1],
+          datasets : [
+              {
+                fillColor : 'rgba(151,187,205,0)',
+                strokeColor : '#e67e22',
+                pointColor : 'rgba(151,187,205,0)',
+                pointStrokeColor : '#e67e22',
+                data : lines[i]
+              }
+            ],
+          };
+        $scope[y] = {
+          scaleLineColor : 'rgba(0,0,0,.1)',
+          // scaleOverride : true,
+          //Number - The number of steps in a hard coded scale
+          scaleSteps : 6,
+          //Number - The value jump in the hard coded scale
+          scaleStepWidth : 300,
+          //Number - The scale starting value
+          scaleStartValue : 0,
+        };
       }
 
-      //  MONTH GRAPH
-      $scope.monthChart = {
+      // main graph outside of loop
+      var mainGraphLines = [];
+      for (var i in lines) {
+        mainGraphLines.push(lines[i]);
+      }
+      console.log(mainGraphLines[0]);
+      $scope.mainData = {
         labels : [currentMonth-4,currentMonth-3,currentMonth-2,currentMonth-1,currentMonth,currentMonth+1],
         datasets : [
-          {
-              fillColor : 'rgba(151,187,205,0)',
-              strokeColor : '#3C6CE6',
-              pointColor : 'rgba(151,187,205,0)',
-              pointStrokeColor : '#3C6CE6',
-              data : [monthData[0].impressions, monthData[1].impressions, monthData[2].impressions, monthData[3].impressions, monthData[4].impressions, monthData[5].impressions, ]
-            },
             {
-              fillColor : 'rgba(151,187,205,0)',
-              strokeColor : '#F78F1E',
-              pointColor : 'rgba(151,187,205,0)',
-              pointStrokeColor : '#F78F1E',
-              data : [monthData[0].shares, monthData[1].shares, monthData[2].shares, monthData[3].shares, monthData[4].shares, monthData[5].shares, ]
-            },
-            {
-              fillColor : 'rgba(151,187,205,0)',
-              strokeColor : '#10AAE9',
-              pointColor : 'rgba(151,187,205,0)',
-              pointStrokeColor : '#10AAE9',
-              data : [monthData[0].fbclicks, monthData[1].fbclicks, monthData[2].fbclicks, monthData[3].fbclicks, monthData[4].fbclicks, monthData[5].fbclicks, ]
-            },
-            {
-              fillColor : 'rgba(151,187,205,0)',
-              strokeColor : '#f1c40f',
-              pointColor : 'rgba(151,187,205,0)',
-              pointStrokeColor : '#f1c40f',
-              data : [monthData[0].conversions, monthData[1].conversions, monthData[2].conversions, monthData[3].conversions, monthData[4].conversions, monthData[5].conversions, ]
-            }
+                fillColor : 'rgba(151,187,205,0)',
+                strokeColor : '#3C6CE6',
+                pointColor : 'rgba(151,187,205,0)',
+                pointStrokeColor : '#3C6CE6',
+                data : mainGraphLines[0]
+              },
+              {
+                fillColor : 'rgba(151,187,205,0)',
+                strokeColor : '#F78F1E',
+                pointColor : 'rgba(151,187,205,0)',
+                pointStrokeColor : '#F78F1E',
+                data : mainGraphLines[1]
+              },
+              {
+                fillColor : 'rgba(151,187,205,0)',
+                strokeColor : '#10AAE9',
+                pointColor : 'rgba(151,187,205,0)',
+                pointStrokeColor : '#10AAE9',
+                data : mainGraphLines[2]
+              },
+              {
+                fillColor : 'rgba(151,187,205,0)',
+                strokeColor : '#f1c40f',
+                pointColor : 'rgba(151,187,205,0)',
+                pointStrokeColor : '#f1c40f',
+                data : mainGraphLines[3]
+              }
           ],
         };
-      $scope.monthOptions = {
+      $scope.mainOptions = {
         scaleLineColor : 'rgba(0,0,0,.1)',
-        scaleOverride : true,
+        // scaleOverride : true,
         //Number - The number of steps in a hard coded scale
         scaleSteps : 6,
         //Number - The value jump in the hard coded scale
-        scaleStepWidth : 10000,
+        scaleStepWidth : 300,
         //Number - The scale starting value
         scaleStartValue : 0,
       };

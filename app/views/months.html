@@ -32,37 +32,49 @@
 
 <div class='row'>
 
-<div class="col-md-3">
-  <ul class="nav nav-pills nav-stacked">
-    <li id="impressions">
-        <div class="metricTitle">Impressions</div>
-        <div><div class="count">{{monthNowImpressions}} </div>
-        <div class="delta">{{monthDeltaImpressions}}</div></div>
-    </li>
+  <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+      <li id="impressions" ng-click="showImpressions=true;showShares=false;showVisits=false;showConversions=false;showMain=true">
+          <div class="metricTitle">Impressions</div>
+          <div><div class="count">{{impressionsMonthNow}} </div>
+          <div class="delta">{{impressionsMonthDelta}}</div></div>
+      </li>
 
-    <li id='shares'>
-        <div class="metricTitle">Shares</div>
-        <div><div class="count">{{monthNowShares}} </div>
-        <div class="delta">{{monthDeltaShares}}</div></div>
-    </li>
+      <li id='shares' ng-click="showShares=true;showImpressions=false;showVisits=false;showConversions=false;showMain=true">
+          <div class="metricTitle">Shares</div>
+          <div><div class="count">{{sharesMonthNow}} </div>
+          <div class="delta">{{sharesMonthDelta}}</div></div>
+      </li>
 
-    <li id='visits'>
-        <div class="metricTitle">Visits</div>
-        <div><div class="count">{{monthNowVisits}} </div>
-        <div class="delta">{{monthDeltaVisits}}</div></div>
-    </li>
+      <li id='visits' ng-click="showVisits=true;showImpressions=false;showShares=false;showConversions=false;showMain=true">
+          <div class="metricTitle">Visits</div>
+          <div><div class="count">{{fbclicksMonthNow}} </div>
+          <div class="delta">{{fbclicksMonthDelta}}</div></div>
+      </li>
 
-    <li id='conversions'>
-        <div class="metricTitle">Conversions</div>
-        <div><div class="count">{{monthNowConversions}} </div>
-        <div class="delta">{{monthDeltaConversions}}</div></div>
-    </li>
-  </ul>
-  <br>
-</div>
+      <li id='conversions' ng-click="showConversions=true;showImpressions=false;showShares=false;showVisits=false;showMain=true">
+          <div class="metricTitle">Conversions</div>
+          <div><div class="count">{{conversionsMonthNow}} </div>
+          <div class="delta">{{conversionsMonthDelta}}</div></div>
+      </li>
+    </ul>
+    <br>
+  </div>
 
-  <div class="jumbotron col-md-9">
-    <p><canvas chart type="Line" options="monthOptions" data="monthChart" width="650" height="350"></canvas></p>
+  <div class="jumbotron col-md-9" ng-hide="showMain">
+    <canvas chart type="Line" options="mainOptions" data="mainData" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showImpressions">
+    <canvas chart type="Line" options="impressionsOptions" data="impressions" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showShares">
+    <canvas chart type="Line" options="sharesOptions" data="shares" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showVisits">
+    <canvas chart type="Line" options="fbclicksOptions" data="fbclicks" width="650" height="350"></canvas>
+  </div>
+  <div class="jumbotron col-md-9" ng-show="showConversions">
+    <canvas chart type="Line" options="conversionsOptions" data="conversions" width="650" height="350"></canvas>
   </div>
 
 </div><!-- closes row -->
